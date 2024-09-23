@@ -1,6 +1,7 @@
 import { RecipeModule } from "@/components/modules";
 import { db } from "@/drizzle";
 import { recipes } from "@/drizzle/schema";
+import { validateRequest } from "@/lib/auth";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
@@ -15,9 +16,11 @@ export default async function RecipePage({
     where: eq(recipes.id, recipeId),
   });
 
+  const { user } = await validateRequest();
+
   if (!recipe) {
     redirect("/");
   }
 
-  return <RecipeModule recipe={recipe} />;
+  return <RecipeModule recipe={recipe} user={user} />;
 }

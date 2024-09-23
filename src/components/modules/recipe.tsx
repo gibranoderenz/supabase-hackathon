@@ -3,7 +3,7 @@
 import { createCookRoom } from "@/app/actions";
 import { recipes } from "@/drizzle/schema";
 import { InferSelectModel } from "drizzle-orm";
-import { generateId } from "lucia";
+import { generateId, User } from "lucia";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -12,7 +12,8 @@ import { Button } from "../ui/button";
 
 export const RecipeModule: React.FC<{
   recipe: InferSelectModel<typeof recipes>;
-}> = ({ recipe }) => {
+  user: User | null;
+}> = ({ recipe, user }) => {
   const router = useRouter();
 
   const createSession = async () => {
@@ -29,7 +30,11 @@ export const RecipeModule: React.FC<{
         <span className="text-2xl font-bold">{recipe.name}</span>
         <Button
           onClick={() => {
-            createSession();
+            if (!user) {
+              router.push("/api/auth/google");
+            } else {
+              createSession();
+            }
           }}
         >
           Start a Session
