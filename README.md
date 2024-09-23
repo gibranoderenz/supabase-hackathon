@@ -1,36 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Cook Together
 
-## Getting Started
+Cook Together is an app that can enable people in long-distance relationships to cook together.
 
-First, run the development server:
+### How Does It Work?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+In Cook Together, users can create recipes that they want to cook with their family, friend, or loved one. Next, they can create a session and share the link to the session for other people to join (at the moment, the maximum amount of people in a session is only 2). They can then start the session and cook together, sharing the same step-by-step instructions to cook together.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The host can track the progress of the one joining their session, and vice versa.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### How Does Cook Together Use Supabase?
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Cook Together uses Supabase to handle realtime changes on the UI. This application also uses Supabase Database to store users and recipes data, as well as Supabase Storage to handle recipe image uploads.
