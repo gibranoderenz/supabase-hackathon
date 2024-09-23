@@ -17,7 +17,6 @@ import { AvatarImage } from "@radix-ui/react-avatar";
 import { RealtimeChannel } from "@supabase/supabase-js";
 import { InferSelectModel } from "drizzle-orm";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -37,8 +36,6 @@ export const CookSessionModule: React.FC<{
   const [recipe, setRecipe] = useState<InferSelectModel<typeof recipes> | null>(
     null
   );
-
-  const pathame = usePathname();
 
   // handle card changes in the ui
   useEffect(() => {
@@ -172,7 +169,7 @@ export const CookSessionModule: React.FC<{
     return (
       <div className="p-8 flex flex-col gap-4 items-center justify-center h-[80vh]">
         <h1 className="text-xl">
-          You're almost on your way to cooking together!
+          You&apos;re almost on your way to cooking together!
         </h1>
         {!!roomId ? (
           <div className="flex flex-col items-center gap-4">

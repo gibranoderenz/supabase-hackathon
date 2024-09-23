@@ -80,11 +80,11 @@ export const RecipeModule: React.FC<{
             <div className="flex flex-col gap-4">
               {recipe.steps.map((ingredient, index) => {
                 return (
-                  <div className="flex items-center gap-4">
+                  <div key={index} className="flex items-center gap-4">
                     <div className="w-4 h-4 flex items-center justify-center bg-black text-white p-4 rounded-full">
                       {index + 1}
                     </div>
-                    <span key={index}>{ingredient}</span>
+                    <span>{ingredient}</span>
                   </div>
                 );
               })}
