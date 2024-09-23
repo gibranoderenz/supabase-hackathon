@@ -15,7 +15,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useFieldArray, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 export const CreateRecipeModule: React.FC<{ userId: string }> = ({
   userId,
@@ -23,6 +25,8 @@ export const CreateRecipeModule: React.FC<{ userId: string }> = ({
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
   });
+
+  const router = useRouter();
 
   const fileRef = form.register("picture");
 
@@ -52,7 +56,15 @@ export const CreateRecipeModule: React.FC<{ userId: string }> = ({
 
     if (!!pictureUrl) {
       const _values = { ...values, picture: pictureUrl, userId };
-      await createRecipe(JSON.parse(JSON.stringify(_values)));
+      try {
+        await createRecipe(JSON.parse(JSON.stringify(_values)));
+        toast.success("Successfully created recipe.");
+        router.push("/");
+      } catch (err) {
+        toast.error(
+          "An error occurred while creating recipe. Please try again."
+        );
+      }
     }
   };
 
