@@ -31,7 +31,7 @@ export const uploadFile = async (formData: FormData) => {
       .getPublicUrl(fileName);
 
     return data.publicUrl;
-  } catch (err) {}
+  } catch {}
 };
 
 type CreateRecipeParams = Omit<FormSchema, "picture"> & {

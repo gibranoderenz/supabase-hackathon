@@ -60,7 +60,7 @@ export const CreateRecipeModule: React.FC<{ userId: string }> = ({
         await createRecipe(JSON.parse(JSON.stringify(_values)));
         toast.success("Successfully created recipe.");
         router.push("/");
-      } catch (err) {
+      } catch {
         toast.error(
           "An error occurred while creating recipe. Please try again."
         );
