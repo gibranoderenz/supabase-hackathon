@@ -23,7 +23,6 @@ export const uploadFile = async (formData: FormData) => {
       });
 
     if (res.error) {
-      console.log(res.error);
       return;
     }
 
@@ -32,9 +31,7 @@ export const uploadFile = async (formData: FormData) => {
       .getPublicUrl(fileName);
 
     return data.publicUrl;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 type CreateRecipeParams = Omit<FormSchema, "picture"> & {
