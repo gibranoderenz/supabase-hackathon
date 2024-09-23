@@ -11,7 +11,7 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 
 export const RecipeModule: React.FC<{
-  recipe: InferSelectModel<typeof recipes>;
+  recipe: InferSelectModel<typeof recipes> & { user: User };
   user: User | null;
 }> = ({ recipe, user }) => {
   const router = useRouter();
@@ -50,6 +50,7 @@ export const RecipeModule: React.FC<{
               className="absolute object-cover rounded-xl"
             />
           </div>
+          <span>Created by {recipe.user.name}</span>
           <div className="flex items-center justify-center gap-4">
             <div className="flex flex-col items-center justify-center">
               <span className="font-bold">Prep Time</span>

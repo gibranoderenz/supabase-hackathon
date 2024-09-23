@@ -14,6 +14,13 @@ export default async function RecipePage({
 
   const recipe = await db.query.recipes.findFirst({
     where: eq(recipes.id, recipeId),
+    with: {
+      user: {
+        columns: {
+          email: false,
+        },
+      },
+    },
   });
 
   const { user } = await validateRequest();

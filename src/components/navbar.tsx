@@ -25,7 +25,7 @@ export const Navbar = async () => {
           <PopoverTrigger>
             <div className="flex items-center gap-3">
               <Avatar className="w-8 h-8">
-                <AvatarImage src={user.profilePicture} />
+                <AvatarImage src={user?.profilePicture ?? ""} />
                 <AvatarFallback>{user.name[0]}</AvatarFallback>
               </Avatar>
               <span>{user.name.split(" ")[0]}</span>

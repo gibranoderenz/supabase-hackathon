@@ -96,7 +96,7 @@ export const CookSessionModule: React.FC<{
             return;
           }
 
-          await channel.track({ picture: user.profilePicture });
+          await channel.track({ picture: user?.profilePicture ?? "" });
         });
     }
   }, [channel]);

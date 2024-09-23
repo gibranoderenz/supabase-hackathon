@@ -32,5 +32,5 @@ declare module "lucia" {
 interface DatabaseUserAttributes {
   id: string;
   name: string;
-  profilePicture: string;
+  profilePicture: string | null;
 }
